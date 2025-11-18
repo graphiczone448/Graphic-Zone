@@ -1,0 +1,143 @@
+<!-- checkout.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="x-icon" href="Img\logo.png">
+  <title>Graphic Zone-Online Store-Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+        <img src="Img/logo.png" alt="Store Logo">
+        <span>Graphic Zone Online Store</span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html" class="cart-btn">Cart 🛒</a>
+    </nav>
+
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <button id="darkToggle">🌙</button>
+
+</header>
+
+  <main style="max-width:700px; margin:20px auto;">
+    <form id="orderForm">
+      <label>Full name</label><br>
+      <input id="name" required><br><br>
+
+      <label>Address</label><br>
+      <textarea id="address" required></textarea><br><br>
+
+      <label>Phone</label><br>
+      <input id="phone" required><br><br>
+
+      <label>Email</label><br>
+      <input id="email" type="email" required><br><br>
+
+      <label>Payment</label><br>
+      <select id="payment">
+        <option>Credit Card</option>
+        <option>Bank Transfer</option>
+      </select>
+
+      <h3>Order Summary</h3>
+      <div id="summary"></div>
+
+      <h2 id="total">Total: Rs. 0</h2>
+
+      <button type="submit" style="padding:10px 15px; background:blue; color:white; border:none; border-radius:5px;">Place Order</button>
+    
+      <div class="bank-details">
+    <h3>Seller Bank Details</h3>
+    <p><strong>Bank Name:</strong> XXXXXXX Bank</p>
+    <p><strong>Account Name:</strong> ----------------------</p>
+    <p><strong>Account Number:</strong> XXXXXXXXXX</p>
+    <p><strong>Branch:</strong> XXXXXXX</p>
+</div>
+
+    </form>
+
+  </main>
+
+  <script>
+    // populate summary from cart
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const summaryDiv = document.getElementById('summary');
+    if (cart.length === 0) {
+      summaryDiv.innerHTML = '<p style="color:gray;">Your cart is empty.</p>';
+      document.getElementById('total').innerText = 'Total: Rs. 0';
+    } else {
+      let total = 0;
+      summaryDiv.innerHTML = cart.map(i => {
+        const subtotal = Number(i.price) * (i.quantity || 1);
+        total += subtotal;
+        return `<p>${i.name} — Rs.${i.price} x ${i.quantity || 1} = Rs.${subtotal}</p>`;
+      }).join('');
+      document.getElementById('total').innerText = 'Total: Rs. ' + total;
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      // ensure cart still has items
+      const cartNow = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cartNow.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+
+      // build order object
+      const order = {
+        id: 'ORD-' + Date.now(),
+        createdAt: new Date().toISOString(),
+        name: document.getElementById('name').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        payment: document.getElementById('payment').value,
+        items: cartNow,
+        total: cartNow.reduce((s, it) => s + (Number(it.price) * (it.quantity || 1)), 0)
+      };
+
+      // save to orders array
+      const orders = JSON.parse(localStorage.getItem('orders')) || [];
+      orders.push(order);
+      localStorage.setItem('orders', JSON.stringify(orders));
+
+      // clear cart and confirm
+      localStorage.removeItem('cart');
+      alert('Order placed! Order ID: ' + order.id);
+      window.location.href = 'index.html';
+    });
+
+    const toggleBtn = document.getElementById("darkToggle");
+
+// Change mode on click
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+});
+
+// Load saved theme on refresh
+window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+    }
+};
+  </script>
+</body>
+</html>

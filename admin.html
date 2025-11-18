@@ -1,0 +1,97 @@
+<!-- admin.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="x-icon" href="Img\logo.png">
+  <title>Admin - Orders</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+    <div class="logo">
+        <img src="Img/logo.png" alt="Store Logo">
+        <span>Graphic Zone Online Store</span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html" class="cart-btn">Cart 🛒</a>
+    </nav>
+
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <button id="darkToggle">🌙</button>
+
+</header>
+
+  <main style="max-width:900px; margin:20px auto;">
+    <div id="ordersContainer"></div>
+  </main>
+
+  <button id="clearOrdersBtn" 
+        style="padding:10px 15px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
+    Clear All Orders
+</button>
+<br><br>
+
+
+  <script>
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    const container = document.getElementById('ordersContainer');
+
+    if (orders.length === 0) {
+      container.innerHTML = '<p style="color:gray;">No orders found.</p>';
+    } else {
+      container.innerHTML = orders.map(o => {
+        const itemsHTML = (o.items || []).map(it => `<li>${it.name} x ${it.quantity} — Rs.${it.price}</li>`).join('');
+        return `
+          <div style="border:1px solid #ddd; padding:12px; margin-bottom:12px; background:white;">
+            <strong>Order ID:</strong> ${o.id}<br>
+            <strong>Date:</strong> ${new Date(o.createdAt).toLocaleString()}<br>
+            <strong>Name:</strong> ${o.name} &nbsp;&nbsp; <strong>Phone:</strong> ${o.phone}<br>
+            <strong>Address:</strong> ${o.address}<br>
+            <strong>Email:</strong> ${o.email}<br>
+            <strong>Payment:</strong> ${o.payment}<br>
+            <strong>Items:</strong>
+            <ul>${itemsHTML}</ul>
+            <strong>Total:</strong> Rs. ${o.total}
+          </div>
+        `;
+      }).join('');
+    }
+
+document.getElementById("clearOrdersBtn").addEventListener("click", function () {
+    if (confirm("Are you sure you want to delete ALL orders?")) {
+        localStorage.removeItem("orders");
+        alert("All orders have been cleared!");
+        location.reload(); // refresh page
+    }
+});
+
+const toggleBtn = document.getElementById("darkToggle");
+
+// Change mode on click
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+});
+
+// Load saved theme on refresh
+window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+    }
+};
+  </script>
+</body>
+</html>

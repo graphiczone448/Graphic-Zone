@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="x-icon" href="Img\logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Online Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">
+        <img src="Img/logo.png" alt="Store Logo">
+        <span>Graphic Zone Online Store</span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html" class="cart-btn">Cart 🛒</a>
+    </nav>
+
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <button id="darkToggle">🌙</button>
+
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Welcome to <span style="color:#ff4b4b;">Graphic Zone Online Store</span></h1>
+        <p class="tagline">Best deals • 100% quality guaranteed</p>
+        <a href="products.html" class="shop-now">Shop Now →</a>
+    </div>
+</section>
+
+<!-- CATEGORY SECTION -->
+<section class="categories">
+    <h2>Shop by Category</h2>
+    <div class="category-grid">
+
+        <div class="cat-box" style="background-image:url('Img/.jpg');">
+            <p>All</p>
+        </div>
+
+        <div class="cat-box" style="background-image:url('Img/C1.png');">
+            <p>Tution Cards</p>
+        </div>
+
+        <div class="cat-box" style="background-image:url('Img/bd.jpg');">
+            <p>Birthday Cards</p>
+        </div>
+
+        <div class="cat-box" style="background-image:url('Img/Classes.jpg');">
+            <p>Classes</p>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="Img/C3.png" alt="Product">
+            <h3>Card Design 1</h3>
+            <p class="price">Rs.250.00</p>
+            <button>Add to Basket</button>
+        </div>
+
+        <div class="product-card">
+            <img src="Img/C1.png" alt="Product">
+            <h3>Card Design 2</h3>
+            <p class="price">Rs.250.00</p>
+            <button>Add to Basket</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROMO BANNERS -->
+<section class="promo">
+    <div class="promo-left">
+        <h2>🔥 Mega Offer!</h2>
+        <p>Up to 50% OFF on top brands.</p><br><br><br>
+        <a href="#" class="shop-now">Grab Now →</a>
+    </div>
+
+    <div class="promo-right">
+        <img src="images/promo.jpg" alt="">
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>onlinebot6@gmail.com</p>
+    <p>chatbot1066@gmail.com</p><br>
+    <p>© 2025 Vihanga Store | All Rights Reserved</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+const toggleBtn = document.getElementById("darkToggle");
+
+// Change mode on click
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+});
+
+// Load saved theme on refresh
+window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+    }
+};
+</script>
+
+</body>
+</html>
+

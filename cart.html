@@ -1,0 +1,126 @@
+<!-- cart.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="x-icon" href="Img\logo.png">
+  <title>Graphic Zone-Online Store-Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+        <img src="Img/logo.png" alt="Store Logo">
+        <span>Graphic Zone Online Store</span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html" class="cart-btn">Cart 🛒</a>
+    </nav>
+
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <button id="darkToggle">🌙</button>
+
+</header>
+
+  <main>
+    <table id="cartTable" border="1" cellpadding="8" style="width:100%; max-width:800px; margin:20px auto;">
+      <thead>
+        <tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th>Action</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2 id="total" style="text-align:center">Total: Rs. 0</h2>
+
+    <div style="text-align:center; margin:20px;">
+      <a href="checkout.html" id="checkoutBtn" style="padding:10px 20px; background:green; color:white; text-decoration:none; border-radius:5px;">Proceed to Checkout</a>
+    </div>
+  </main>
+
+  <script>
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const tbody = document.querySelector('#cartTable tbody');
+      tbody.innerHTML = '';
+
+      if (cart.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:gray;">Your cart is empty</td></tr>';
+        document.getElementById('total').innerText = 'Total: Rs. 0';
+        return;
+      }
+
+      let total = 0;
+      cart.forEach((item, idx) => {
+        const subtotal = (Number(item.price) * (item.quantity || 1));
+        total += subtotal;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.name}</td>
+          <td>Rs. ${item.price}</td>
+          <td>
+            <input type="number" min="1" value="${item.quantity || 1}" data-index="${idx}" style="width:70px;">
+          </td>
+          <td>Rs. ${subtotal}</td>
+          <td><button data-remove="${idx}">Remove</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('total').innerText = 'Total: Rs. ' + total;
+    }
+
+    // wire events
+    document.addEventListener('input', function(e){
+      if (e.target.matches('input[type="number"][data-index]')) {
+        const idx = Number(e.target.dataset.index);
+        const qty = Math.max(1, parseInt(e.target.value) || 1);
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart[idx].quantity = qty;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+    });
+
+    document.addEventListener('click', function(e){
+      if (e.target.matches('button[data-remove]')) {
+        const idx = Number(e.target.dataset.remove);
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(idx, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+    });
+
+    // initial render
+    renderCart();
+
+    const toggleBtn = document.getElementById("darkToggle");
+
+// Change mode on click
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+});
+
+// Load saved theme on refresh
+window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+    }
+};
+  </script>
+</body>
+</html>

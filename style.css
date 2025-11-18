@@ -1,0 +1,405 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4f4f4;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    padding: 60px;
+    text-align: center;
+    background: url('images/banner.jpg') no-repeat center/cover;
+    color: white;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 5px gray;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.product-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+
+.product {
+    background: white;
+    width: 220px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px gray;
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+button {
+    background: black;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.hero {
+    width: 100%;
+    height: 175px;
+    background: url('Img/banner.png') no-repeat center/cover;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+body {
+    background: url("Img/pngtree-orange-yellow-fluid-abstract-background-image_538066.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+.buy-form {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+.buy-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.buy-form input,
+.buy-form textarea,
+.buy-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.buy-form button {
+    background: black;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+}
+.buy-btn {
+    display: inline-block;
+    background: green;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.bank-details {
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.bank-details h3 {
+    margin-top: 0;
+    color: #333;
+}
+.categories {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.categories button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    background: #222;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.categories button:hover {
+    background: #555;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    box-sizing: border-box;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    height: 70px;
+    background: gold;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 45px;
+    margin-right: 10px;
+}
+
+.nav-links a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    color: #ff4b4b;
+}
+
+.menu-icon {
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+}
+
+/* HERO */
+.hero {
+    background: url("images/banner.jpg") center/cover no-repeat;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    color: white;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-size: 20px;
+    margin: 10px 0 20px;
+}
+
+.shop-now {
+    background: #ff4b4b;
+    padding: 12px 25px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* CATEGORIES */
+.categories {
+    text-align: center;
+    padding: 40px 10px;
+}
+
+.category-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cat-box {
+    width: 220px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-color: #ddd;
+}
+
+.cat-box p {
+    background: rgba(0,0,0,0.6);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 0 0 12px 12px;
+}
+
+/* PRODUCTS */
+.products {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.product-card {
+    width: 230px;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-card .price {
+    color: #ff4b4b;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-card button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #111;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background: #ff4b4b;
+}
+
+/* PROMO */
+.promo {
+    display: flex;
+    margin: 50px;
+    background: #111;
+    color: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.promo-left {
+    flex: 1;
+    padding: 40px;
+}
+
+.promo-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 70px;
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .promo {
+        flex-direction: column;
+    }
+}
+
+/* Dark Mode Button */
+#darkToggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* GLOBAL DARK MODE */
+body.dark-mode {
+    background: #121212;
+    color: #e6e6e6;
+}
+
+/* Navbar */
+.dark-mode .navbar {
+    background: #1a1a1a;
+}
+
+/* Product cards */
+.dark-mode .product-card {
+    background: #1d1d1d;
+    color: white;
+}
+
+/* Promo section */
+.dark-mode .promo {
+    background: #1b1b1b;
+}
+
+/* Footer */
+.dark-mode footer {
+    background: #1a1a1a;
+}
+

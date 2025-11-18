@@ -1,0 +1,128 @@
+<!-- products.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="x-icon" href="Img\logo.png">
+  <title>Graphic Zone-Online Store-Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+        <img src="Img/logo.png" alt="Store Logo">
+        <span>Graphic Zone Online Store</span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html" class="cart-btn">Cart 🛒</a>
+    </nav>
+
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <button id="darkToggle">🌙</button>
+
+</header>
+  <div class="categories">
+    <button onclick="filterCategory('All')">All</button>
+    <button onclick="filterCategory('Tution Crads')">Tution Crads</button>
+    <button onclick="filterCategory('Birthday cards')">Birthday cards</button>
+    <button onclick="filterCategory('Classes')">Classes</button>
+</div>
+
+
+  <main>
+    <section class="product-grid">
+
+<!-- Tution Crads catogary -->
+        
+<div class="product" data-category="Tution Crads">
+    <h3>Card design 1</h3>
+    <img src="Img/C1.png">
+    <p>Rs.250.00</p>
+    <button onclick="addToCart('Card design 1', 250)">Add to Cart</button>
+</div>
+<div class="product" data-category="Tution Crads">
+    <h3>Card design 2</h3>
+    <img src="Img/C2.png">
+    <p>Rs.250.00</p>
+    <button onclick="addToCart('Card', 250)">Add to Cart</button>
+</div>
+
+<!-- Birthday cards catogary -->
+
+<div class="product" data-category="Birthday cards">
+    <h3>Birthday Design 1</h3>
+    <img src="Img/p1.jpg">
+    <p>Rs.500.00</p>
+    <button onclick="addToCart('Birthday Design 1', 500)">Add to Cart</button>
+</div>
+
+<!-- classes catogary -->
+
+<div class="product" data-category="Classes">
+    <h3>Card</h3>
+    <img src="Img/C2.png">
+    <p>Rs.250.00</p>
+    <button onclick="addToCart('Card', 250)">Add to Cart</button>
+</div>
+
+    </section>
+  </main>
+ 
+ <script>
+    function addToCart(name, price) {
+      // get cart or empty array
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // check if item already exists (by name)
+      const existing = cart.find(i => i.name === name);
+      if (existing) {
+        existing.quantity = (existing.quantity || 1) + 1;
+      } else {
+        cart.push({ name: name, price: Number(price), quantity: 1 });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(name + ' added to cart');
+    }
+    
+function filterCategory(category) {
+    const products = document.querySelectorAll('.product');
+
+    products.forEach(product => {
+        if (category === 'All' || product.dataset.category === category) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+
+const toggleBtn = document.getElementById("darkToggle");
+
+// Change mode on click
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+});
+
+// Load saved theme on refresh
+window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+    }
+};
+  </script>
+</body>
+</html>
