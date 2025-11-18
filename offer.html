@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="x-icon" href="Img\logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Offer</title>
+<link rel="stylesheet" href="offer.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">
+        <img src="Img/logo.png" alt="Store Logo">
+        <span>Graphic Zone Online Store</span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html" class="cart-btn">Cart 🛒</a>
+    </nav>
+
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <button id="darkToggle">🌙</button>
+
+</header>
+
+<!-- DARK MODE TOGGLE -->
+<button id="darkToggle" class="dark-btn">🌙</button>
+
+<!-- OFFER BANNER -->
+<div class="offer-banner">
+    <h1>🎉 Mega Sale is Live! 🎉</h1>
+    <p>Get amazing discounts on your favorite products</p>
+</div>
+
+<!-- OFFER SECTION -->
+<section class="offer-container">
+    <div class="offer-box">
+        <h1>🔥 Special Offer For You! 🔥</h1>
+        <p class="desc">Our customers who purchase items <strong>over Rs. 5000</strong> will receive an exclusive</p>
+        <h2 class="discount">✨ 50% OFF ✨</h2>
+
+        <!-- COUNTDOWN TIMER -->
+        <div class="countdown">
+            <h3>Offer Ends In:</h3>
+            <div id="timer">01:00:00</div>
+        </div>
+
+        <p class="small">*Applicable for selected items only</p>
+
+        <!-- CLAIM BUTTON -->
+        <a href="products.html" class="shop-btn">Claim Offer →</a>
+    </div>
+</section>
+
+<!-- POPUP OFFER ON HOMEPAGE -->
+<div id="offerPopup" class="popup">
+    <div class="popup-box">
+        <h2>Special Limited Offer!</h2>
+        <p>Buy items over Rs. 5000 and get 50% OFF!</p>
+        <a href="offer.html" class="popup-btn">View Offer</a>
+        <button class="close-popup">Close</button>
+    </div>
+</div>
+
+<script src="offer.js"></script>
+</body>
+</html>
