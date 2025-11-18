@@ -93,10 +93,14 @@ window.onload = () => {
     }
 };
 
+window.onload = function () {
+    // Auto refresh every 15 seconds
     setInterval(function() {
-    location.reload();
-}, 15000); // 15000 milliseconds = 15 seconds
+        location.reload();
+    }, 15000);
+};
   </script>
 </body>
 </html>
+
 
