@@ -52,7 +52,8 @@
             <strong>Date:</strong> ${new Date(o.createdAt).toLocaleString()}<br>
             <strong>Name:</strong> ${o.name} &nbsp;&nbsp; <strong>Phone:</strong> ${o.phone}<br>
             <strong>Address:</strong> ${o.address}<br>
-            <strong>Email:</strong> ${o.email}<br>
+            <strong>Email:</strong> ${o.email}<br><br><br>
+            <strong>Details:</strong> ${o.Details}<br><br><br>
             <strong>Payment:</strong> ${o.payment}<br>
             <strong>Items:</strong>
             <ul>${itemsHTML}</ul>
@@ -93,14 +94,9 @@ window.onload = () => {
     }
 };
 
-window.onload = function () {
-    // Auto refresh every 15 seconds
-    setInterval(function() {
-        location.reload();
-    }, 15000);
-};
+setInterval(function() {
+    location.reload();
+}, 15000); // 15000 milliseconds = 15 seconds
   </script>
 </body>
 </html>
-
-
