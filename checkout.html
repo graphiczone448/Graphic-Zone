@@ -26,7 +26,7 @@
 
 </header>
 
-  <main style="max-width:700px; margin:20px auto;">
+  <main style="width:700px; margin:20px auto;">
     <form id="orderForm">
       <label>Full name</label><br>
       <input id="name" required><br><br>
@@ -39,6 +39,9 @@
 
       <label>Email</label><br>
       <input id="email" type="email" required><br><br>
+
+      <label>Details</label><br>
+      <textarea id="Details" required style="width: 500px; height: 350px; color: darkgreen;"></textarea><br><br>
 
       <label>Payment</label><br>
       <select id="payment">
@@ -100,6 +103,7 @@
         address: document.getElementById('address').value.trim(),
         phone: document.getElementById('phone').value.trim(),
         email: document.getElementById('email').value.trim(),
+        Details: document.getElementById('Details').value.trim(),
         payment: document.getElementById('payment').value,
         items: cartNow,
         total: cartNow.reduce((s, it) => s + (Number(it.price) * (it.quantity || 1)), 0)
