@@ -142,6 +142,35 @@ window.onload = () => {
         toggleBtn.textContent = "☀️";
     }
 };
+
+
+// discount
+function updateCartTotal() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.qty;
+    });
+
+    let discount = 0;
+
+    // Check if offer is active
+    if (total >= 5000 && localStorage.getItem("offer50") === "active") {
+        discount = total * 0.50; // 50% off
+    }
+
+    let finalTotal = total - discount;
+
+    document.getElementById("cartTotal").innerText = "Rs. " + finalTotal;
+
+    // Optional: show discount message
+    if (discount > 0) {
+        document.getElementById("discountBox").innerHTML =
+            `<p class="discount">🎉 50% Offer Applied: -Rs. ${discount}</p>`;
+    }
+}
+
   </script>
 </body>
 </html>
