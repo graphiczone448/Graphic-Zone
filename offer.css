@@ -552,3 +552,7 @@ body.dark-mode .popup-box {
     border-radius: 5px;
     cursor: pointer;
 }
+
+#em{
+    cursor: pointer;
+}
