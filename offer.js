@@ -52,3 +52,7 @@ window.onload = function () {
 function closePopup() {
     document.getElementById("popup").style.display = "none";
 }
+function activateOffer() {
+    localStorage.setItem("offer50", "active");
+    window.location.href = "shop.html"; // or your shop page
+}
