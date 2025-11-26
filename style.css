@@ -77,7 +77,7 @@ button {
     align-items: center;
 }
 body {
-    background: url("Img/pngtree-orange-yellow-fluid-abstract-background-image_538066.jpg") no-repeat center center fixed;
+    background: url("Img/1christmas.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 .buy-form {
@@ -406,4 +406,5 @@ body.dark-mode {
 #em{
     cursor: pointer;
 }
+
 
